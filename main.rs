@@ -203,7 +203,7 @@ fn main() {
         Box::new(|game,terminal,_item| {
             //Add logic later
         })
-    )
+    );
     terminal.log("Welcome to Terminus.py\nYou can type 'help' to see available commands. Type 'tutorial' to see a tutorial. Use 'save' to save and 'load' to load your most recent save".to_string());
     loop {
         terminal.next_command(&mut game, &mut item_list);
