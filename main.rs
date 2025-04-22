@@ -2,11 +2,11 @@ use std::collections::HashMap;
 use std::io::{Write, stdin, stdout};
 use std::process::exit;
 
-trait CloneableFn: FnMut(&mut Game, &mut Terminal, &mut [&mut Item; 4]) + Send + Sync {
+trait CloneableFn: FnMut(&mut Game, &mut Terminal, &mut [&mut Item; 4]) + Send + Sync { //taken from the internet
     fn clone_box(&self) -> Box<dyn CloneableFn>;
 }
 
-impl<F> CloneableFn for F
+impl<F> CloneableFn for F //taken from the internet
 where
     F: Fn(&mut Game, &mut Terminal, &mut [&mut Item; 4]) + Clone + Send + Sync + 'static,
 {
@@ -15,7 +15,7 @@ where
     }
 }
 
-impl Clone for Box<dyn CloneableFn> {
+impl Clone for Box<dyn CloneableFn> { //taken from the internet
     fn clone(&self) -> Box<dyn CloneableFn> {
         self.clone_box()
     }
